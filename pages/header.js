@@ -11,6 +11,9 @@ class Header {
     this.getCountry = page.locator('li.js-analyticsClick').getByRole('link', { name: country });
     this.getLanguage = page.getByRole('link', { name: language });
     this.getSignUpButton = page.locator('header').getByRole('link', { name: 'Sign up' });
+    this.getLoginButton = page.locator('header').getByRole('link', { name: 'Log in' });
+    this.getMyAccountButton = page.locator('header').getByRole('link', { name: 'My account' });
+
 
 
     //Menu
@@ -35,8 +38,6 @@ class Header {
     this.getGreeceCountry = page.locator('li.js-analyticsClick[data-type="nav_country_greece"]');
     this.getPolandCountry = page.locator('li.js-analyticsClick[data-type="nav_country_poland"]');
   }
-
-
 
   // Methods
 
@@ -63,6 +64,12 @@ class Header {
   async clickSignUpButton() {
     await this.getSignUpButton.click();
   }
+
+  async clickLoginButton() {
+    await this.getLoginButton.click();
+  }
+
+  
 }
 
 export default Header
