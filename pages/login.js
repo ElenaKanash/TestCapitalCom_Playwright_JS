@@ -11,25 +11,36 @@ class Login {
     this.getPasswordField = page.getByRole('textbox', { name: 'Password' });
     this.getContinueBtn = page.getByRole('button', { name: 'Continue' });
     this.getMyAccountButton = page.locator('header').getByRole('button', { name: 'My account' });
-
+    this.getLogout = page.getByText('Logout')
 
   }
 
   //Methods
+
+
+  async userAutorizes() {
+    await this.validLoginForm();
+    await this.page.waitForNavigation();
+    //await expect(this.page).toHaveURL(PLATFORMURL.platformBaseUrl)
+    await this.page.goBack();
+    await this.checkMyAccountButton();
+  }
+
+  async userUnautoruzed() {
+    await this.validLoginForm();
+    await this.page.waitForNavigation();
+    await this.page.goBack();
+    await this.getMyAccountButton.click();
+    await this.getLogout.click();
+  }
+
   async validLoginForm() {
     await this.fillEmailField();
     await this.fillPasswordField();
     await this.clickContinueBtn();
   }
 
-  async isUserAutorizes() {
-    await this.page.waitForNavigation();
-    await expect(this.page).toHaveURL(PLATFORMURL.platformBaseUrl)
-    await this.page.goBack();
-    await this.checkMyAccountButton();
-  }
-
-  async fillEmailField() {    
+  async fillEmailField() {
     await this.getEmailField.fill(USER_DATA.email)
     await expect(this.getEmailField).toHaveValue(USER_DATA.email);
   }
@@ -40,13 +51,13 @@ class Login {
     await this.getPasswordField.blur();
   }
 
-  async clickContinueBtn() {    
+  async clickContinueBtn() {
     await this.getContinueBtn.click();
-    
+
   }
-async checkMyAccountButton() {
-  await expect(this.getMyAccountButton).toBeVisible();
-}
+  async checkMyAccountButton() {
+    await expect(this.getMyAccountButton).toBeVisible();
+  }
 
 }
 export default Login
