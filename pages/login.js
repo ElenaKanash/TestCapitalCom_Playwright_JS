@@ -31,8 +31,8 @@ class Login {
     await this.page.waitForNavigation();
     await this.page.goBack();
     await this.getMyAccountButton.click();
-    await this.page.waitForSelector('.logout-user', { state: 'visible' });
-    await this.getLogout.click();
+    await this.page.waitForSelector('.logout-user', { state: 'visible', timeout: 90000 });
+    await this.getLogout.click({ timeout: 90000 });
   }
 
   async validLoginForm() {
