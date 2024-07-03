@@ -11,7 +11,7 @@ class Login {
     this.getPasswordField = page.getByRole('textbox', { name: 'Password' });
     this.getContinueBtn = page.getByRole('button', { name: 'Continue' });
     this.getMyAccountButton = page.locator('header').getByRole('button', { name: 'My account' });
-    this.getLogout = page.getByText('Logout')
+    this.getLogout = page.locator('.logout-user')//page.getByText('Logout')
 
   }
 
@@ -31,6 +31,7 @@ class Login {
     await this.page.waitForNavigation();
     await this.page.goBack();
     await this.getMyAccountButton.click();
+    await expect(this.getLogout).toBeVisible();
     await this.getLogout.click();
   }
 

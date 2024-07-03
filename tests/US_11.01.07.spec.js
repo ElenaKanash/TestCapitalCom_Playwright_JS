@@ -44,8 +44,7 @@ test.describe('JS/US_11.01.07_Menu [Educations] > Menu item [Glossary of trading
     await header.hoverCountryAndLang();
     await header.clickDropdownCountry();
     await header.clickGetCountry();
-    await header.clickLoginButton();
-    //await login.validLoginForm();
+    await header.clickLoginButton();   
     await login.userUnautoruzed();
   });
 
@@ -68,8 +67,7 @@ test.describe('JS/US_11.01.07_Menu [Educations] > Menu item [Glossary of trading
     await header.hoverCountryAndLang();
     await header.clickDropdownCountry();
     await header.clickGetCountry();
-    await header.clickLoginButton();
-    //await login.validLoginForm();
+    await header.clickLoginButton();    
     await login.userAutorizes();    
   });
 
