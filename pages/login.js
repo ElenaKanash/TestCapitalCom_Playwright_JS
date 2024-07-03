@@ -31,7 +31,7 @@ class Login {
     await this.page.waitForNavigation();
     await this.page.goBack();
     await this.getMyAccountButton.click();
-    await expect(this.getLogout).toBeVisible();
+    await this.page.waitForSelector('.logout-user', { state: 'visible' });
     await this.getLogout.click();
   }
 
