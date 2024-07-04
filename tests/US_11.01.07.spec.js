@@ -1,11 +1,9 @@
 import { test, expect } from "@playwright/test";
 import MainPage from "../pages/mainPage";
 import Header from "../pages/header";
-import Login from "../pages/login";
+import Login from "../pages/logIn";
 
-
-
-const language = 'en';
+const language = 'EN';
 const country = 'Australia';
 const license = 'ASIC';
 
@@ -17,17 +15,13 @@ test.describe('JS/US_11.01.07_Menu [Educations] > Menu item [Glossary of trading
 
     await mainPage.goToMainPage();
     await mainPage.clickAcceptAllCookies();
-    await header.hoverCountryAndLang();
-    await header.clickDropdownCountry();
-    await header.clickGetCountry();
-    //await header.hoverEducationMenu();
+    await header.selectCountry();
   });
 
   test(`JS/TC_11.01.07!00_01_Unreg | Educations > Menu item" [Glossary of trading terms] > Click button [1. Create & verify your account ] on block "Steps trading" (Still looking for a platform/broker you can trust?) on '${language}' language and '${license}' license`, async ({ page }) => {
     const header = new Header(page);
     await header.hoverEducationMenu();
-
-
+    await header.clickEducationGlossarySubMenu();
   });
 
 });
@@ -41,16 +35,15 @@ test.describe('JS/US_11.01.07_Menu [Educations] > Menu item [Glossary of trading
 
     await mainPage.goToMainPage();
     await mainPage.clickAcceptAllCookies();
-    await header.hoverCountryAndLang();
-    await header.clickDropdownCountry();
-    await header.clickGetCountry();
-    await header.clickLoginButton();   
+    await header.selectCountry();
+    await header.clickLoginButton();
     await login.userUnautoruzed();
   });
 
   test(`JS/TC_11.01.07!00_01_UnAuth | Educations > Menu item" [Glossary of trading terms] > Click button [1. Create & verify your account ] on block "Steps trading" (Still looking for a platform/broker you can trust?) on '${language}' language and '${license}' license`, async ({ page }) => {
     const header = new Header(page);
     await header.hoverEducationMenu();
+    await header.clickEducationGlossarySubMenu();
   });
 
 });
@@ -64,17 +57,16 @@ test.describe('JS/US_11.01.07_Menu [Educations] > Menu item [Glossary of trading
 
     await mainPage.goToMainPage();
     await mainPage.clickAcceptAllCookies();
-    await header.hoverCountryAndLang();
-    await header.clickDropdownCountry();
-    await header.clickGetCountry();
+    await header.selectCountry();
     await header.clickLoginButton();    
-    await login.userAutorizes();    
+    await login.userAutorizes();
   });
 
 
   test(`JS/TC_11.01.07!00_01_Auth | Educations > Menu item" [Glossary of trading terms] > Click button [1. Create & verify your account ] on block "Steps trading" (Still looking for a platform/broker you can trust?) on '${language}' language and '${license}' license`, async ({ page }) => {
     const header = new Header(page);
     await header.hoverEducationMenu();
+    await header.clickEducationGlossarySubMenu();
   });
 
 });

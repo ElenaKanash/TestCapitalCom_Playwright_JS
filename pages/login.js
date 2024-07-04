@@ -1,5 +1,7 @@
 import { expect } from "@playwright/test";
 import { USER_DATA, PLATFORMURL } from "../helpers/testData";
+import Header from "./header";
+
 
 class Login {
   constructor(page) {
@@ -17,22 +19,32 @@ class Login {
 
   //Methods
 
-
   async userAutorizes() {
+    //await this.clickLoginButton();
     await this.validLoginForm();
     await this.page.waitForNavigation();
-    //await expect(this.page).toHaveURL(PLATFORMURL.platformBaseUrl)
+    await expect(this.page).toHaveURL(PLATFORMURL.platformBaseUrl)
     await this.page.goBack();
     await this.checkMyAccountButton();
   }
 
   async userUnautoruzed() {
+    //await this.clickLoginButton();
     await this.validLoginForm();
     await this.page.waitForNavigation();
     await this.page.goBack();
+    await this.page.waitForLoadState('load');
+    await this.checkMyAccountButton();
     await this.getMyAccountButton.click();
-    await this.page.waitForSelector('.logout-user', { state: 'visible', timeout: 90000 });
-    await this.getLogout.click({ timeout: 90000 });
+    //await this.page.waitForSelector('.logout-user', { state: 'visible', timeout: 90000 });
+    //await page.waitForSelector('.logout-user', { state: 'visible' });       
+    await this.getLogout.click({ timeout: 10000 });
+    await this.page.waitForLoadState('load');  
+  }
+
+  async clickLoginButton() {
+    const header = new Header();
+    await header.getLoginButton.click()
   }
 
   async validLoginForm() {

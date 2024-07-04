@@ -1,3 +1,6 @@
+import { expect } from "@playwright/test";
+import { PLATFORMURL } from "../helpers/testData";
+
 const language = 'English';
 const country = 'Australia';
 
@@ -41,6 +44,12 @@ class Header {
 
   // Methods
 
+  async selectCountry() {
+    await this.hoverCountryAndLang();
+    await this.clickDropdownCountry();
+    await this.clickGetCountry();
+  }
+
   async hoverCountryAndLang() {
     await this.getCountryAndLangBtn.hover()
   }
@@ -58,7 +67,8 @@ class Header {
   }
 
   async clickEducationGlossarySubMenu() {
-    await this.getEducationGlossarySubMenu.click();
+    await this.getEducationGlossarySubMenu.click();    
+    await expect(this.page).toHaveURL(PLATFORMURL.EducationGlossarySubMenuUrl)
   }
 
   async clickSignUpButton() {

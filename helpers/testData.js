@@ -4,6 +4,7 @@ const USER_DATA = {
  }
 
  const PLATFORMURL  = {
-  platformBaseUrl: 'https://capital.com/trading/platform/'
+  platformBaseUrl: 'https://capital.com/trading/platform/',
+  EducationGlossarySubMenuUrl: 'https://capital.com/financial-dictionary'
  }
 export  {  USER_DATA, PLATFORMURL }
