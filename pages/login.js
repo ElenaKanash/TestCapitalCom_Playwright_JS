@@ -35,11 +35,10 @@ class Login {
     await this.page.goBack();
     await this.page.waitForLoadState('load');
     await this.checkMyAccountButton();
-    await this.getMyAccountButton.click();
-    //await this.page.waitForSelector('.logout-user', { state: 'visible', timeout: 90000 });
-    //await page.waitForSelector('.logout-user', { state: 'visible' });       
+    await this.getMyAccountButton.focus();
+    await this.getMyAccountButton.click();        
     await this.getLogout.click({ timeout: 10000 });
-    await this.page.waitForLoadState('load');  
+     
   }
 
   async clickLoginButton() {

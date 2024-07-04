@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 import MainPage from "../pages/mainPage";
 import Header from "../pages/header";
-import Login from "../pages/logIn";
+import Login from './../pages/login';
 
 const language = 'EN';
 const country = 'Australia';
