@@ -35,14 +35,14 @@ class Login {
     await this.page.goBack();
     await this.page.waitForLoadState('load');
     await this.checkMyAccountButton();
-    await page.screenshot({ path: 'screenshot.png' });
+    await this.page.screenshot({ path: 'screenshot.png' });
     await this.getMyAccountButton.scrollIntoViewIfNeeded();
     await this.getMyAccountButton.focus();
-    await this.getMyAccountButton.click({ timeout: 10000 }); 
-    await page.screenshot({ path: 'screenshot.png' });
+    await this.getMyAccountButton.click({ timeout: 15000 }); 
+    await this.page.screenshot({ path: 'screenshot.png' });
     await this.getLogout.scrollIntoViewIfNeeded();
-    await this.getLogout.click({ timeout: 10000 });
-    await page.screenshot({ path: 'screenshot.png' });
+    await this.getLogout.click({ timeout: 15000 });
+    await this.page.screenshot({ path: 'screenshot.png' });
      
   }
 
