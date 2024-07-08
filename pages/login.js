@@ -39,7 +39,7 @@ class Login {
     await this.getMyAccountButton.scrollIntoViewIfNeeded();
    // await this.getMyAccountButton.focus();
     await this.clickMyAcoountBtn()  
-    //await this.getLogout.scrollIntoViewIfNeeded();
+    await this.getLogout.scrollIntoViewIfNeeded();
     await this.clickLogoutBtn()   
   }
 
