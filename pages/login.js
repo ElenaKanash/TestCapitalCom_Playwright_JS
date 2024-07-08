@@ -77,6 +77,7 @@ class Login {
   async clickLogoutBtn() {
     await this.getLogout.scrollIntoViewIfNeeded();
     await this.getLogout.click();
+    await expect(this.header.getLoginButton).toBeVisible();
   }
 
 }
