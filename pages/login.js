@@ -20,7 +20,7 @@ class Login {
   //Methods
 
   async userAutorizes() {
-    await this.clickHeaderLoginButton();
+    await this.clickLoginButton();
     await this.validLoginForm();
     await this.page.waitForNavigation();
     await expect(this.page).toHaveURL(PLATFORMURL.platformBaseUrl)
@@ -29,18 +29,21 @@ class Login {
   }
 
   async userUnautoruzed() {
-    await this.clickHeaderLoginButton();
+    await this.clickLoginButton();
     await this.validLoginForm();
     await this.page.waitForNavigation();
     await this.page.goBack();
     await this.page.waitForLoadState('load');
+    await this.getMyAccountButton.scrollIntoViewIfNeeded();
     await this.checkMyAccountButton();
-    await this.clickMyAcoountBtn()
-    await this.clickLogoutBtn()
+    await this.getMyAccountButton.focus();
+    await this.clickMyAcoountBtn();
+    await this.getLogout.scrollIntoViewIfNeeded();
+    await this.clickLogoutBtn();
   }
 
-  async clickHeaderLoginButton() {
-    await this.header.clickLoginButton();
+  async clickLoginButton() {
+    await this.header.getLoginButton.click();
   }
 
   async validLoginForm() {
@@ -69,13 +72,10 @@ class Login {
   }
 
   async clickMyAcoountBtn() {
-    await this.getMyAccountButton.scrollIntoViewIfNeeded();
-    await this.getMyAccountButton.focus();
     await this.getMyAccountButton.click();
   }
 
   async clickLogoutBtn() {
-    await this.getLogout.scrollIntoViewIfNeeded();
     await this.getLogout.click();
     await expect(this.header.getLoginButton).toBeVisible();
   }
