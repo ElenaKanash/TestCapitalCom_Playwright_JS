@@ -40,7 +40,7 @@ class Login {
     await this.getMyAccountButton.click({ timeout: 15000 }); 
     await this.page.screenshot({ path: 'screenshot.png' });
     await this.getLogoutBtn.scrollIntoViewIfNeeded();
-    await this.getLogoutBtn.click({ timeout: 15000 });
+    await this.getLogoutBtn.click({ timeout: 15000 });    
 /*  
     await this.page.waitForLoadState('load');   
     await this.getMyAccountButton.scrollIntoViewIfNeeded();
