@@ -14,6 +14,7 @@ class Login {
     this.getContinueBtn = page.getByRole('button', { name: 'Continue' });
     this.getMyAccountButton = page.locator('header').getByRole('button', { name: 'My account' });
     this.getLogout = page.locator('.logout-user')//page.getByText('Logout')
+    this.getLoginBtn = page.locator('header').getByRole('link', { name: 'Log in' });
 
   }
 
@@ -34,16 +35,14 @@ class Login {
     await this.page.waitForNavigation();
     await this.page.goBack();
     await this.page.waitForLoadState('load');
-    await this.checkMyAccountButton();
-    await this.page.screenshot({ path: 'screenshot.png' });
+    await this.checkMyAccountButton();   
     await this.getMyAccountButton.scrollIntoViewIfNeeded();
     await this.getMyAccountButton.focus();
-    await this.getMyAccountButton.click({ timeout: 15000 }); 
-    await this.page.screenshot({ path: 'screenshot.png' });
+    await this.getMyAccountButton.click({ timeout: 25000 });    
     await this.getLogout.scrollIntoViewIfNeeded();
-    await this.getLogout.click({ timeout: 15000 });
-    await this.page.screenshot({ path: 'screenshot.png' });
-     
+    await this.getLogout.focus()
+    await this.getLogout.click({ timeout: 25000 });
+    await expect(this.getLoginBtn).toBeVisible();
   }
 
   async clickLoginButton() {

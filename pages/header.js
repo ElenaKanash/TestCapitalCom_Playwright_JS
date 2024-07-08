@@ -50,7 +50,7 @@ class Header {
     await this.clickGetCountry();
   }
 
-  async hoverCountryAndLang() {
+  async hoverCountryAndLang() {    
     await this.getCountryAndLangBtn.hover()
   }
 
@@ -63,7 +63,8 @@ class Header {
   }
 
   async hoverEducationMenu() {
-    await this.getEducationMenu.hover();
+    //await this.getEducationMenu.waitFor({ state: 'visible' });
+    await this.getEducationMenu.hover({ timeout: 25000 });
   }
 
   async clickEducationGlossarySubMenu() {
