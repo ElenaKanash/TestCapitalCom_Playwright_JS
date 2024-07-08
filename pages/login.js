@@ -36,8 +36,8 @@ class Login {
     await this.page.goBack();
     await this.page.waitForLoadState('load');      
     await this.checkMyAccountButton();    
-    // await this.getMyAccountButton.scrollIntoViewIfNeeded();
-    await this.getMyAccountButton.focus();
+    await this.getMyAccountButton.scrollIntoViewIfNeeded();
+   // await this.getMyAccountButton.focus();
     await this.clickMyAcoountBtn()  
     //await this.getLogout.scrollIntoViewIfNeeded();
     await this.clickLogoutBtn()   
@@ -77,7 +77,7 @@ class Login {
   }
 
   async clickLogoutBtn() {
-    await this.getLogout.scrollIntoViewIfNeeded();
+   // await this.getLogout.scrollIntoViewIfNeeded();
     await this.getLogout.click();  
   }
 
