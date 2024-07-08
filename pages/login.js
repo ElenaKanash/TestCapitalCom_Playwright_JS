@@ -34,14 +34,23 @@ class Login {
     await this.page.waitForNavigation();
     await this.page.goBack();
     await this.page.waitForLoadState('load');
-    await this.checkMyAccountButton();
+    await this.checkMyAccountButton();    
+    await this.getMyAccountButton.scrollIntoViewIfNeeded();
+    await this.getMyAccountButton.focus();
+    await this.getMyAccountButton.click({ timeout: 15000 }); 
+    await this.page.screenshot({ path: 'screenshot.png' });
+    await this.getLogoutBtn.scrollIntoViewIfNeeded();
+    await this.getLogoutBtn.click({ timeout: 15000 });
+/*  
+    await this.page.waitForLoadState('load');   
     await this.getMyAccountButton.scrollIntoViewIfNeeded();
     await this.getMyAccountButton.focus();
     await this.clickMyAcoountBtn();
-    await this.checkLogoutBtn();
+    await this.page.screenshot({ path: 'screenshot.png' });   
     await this.getLogoutBtn.scrollIntoViewIfNeeded();
+    await this.getLogoutBtn.waitFor({ state: 'visible' });  
     await this.getLogoutBtn.focus();
-    await this.clickLogoutBtn();
+    await this.clickLogoutBtn(); */
   }
 
   async clickLoginButton() {
@@ -81,7 +90,7 @@ class Login {
     await expect(this.getLogoutBtn).toBeVisible();
   }
 
-  async clickLogoutBtn() {
+  async clickLogoutBtn() {     
     await this.getLogoutBtn.click({ timeout: 15000 });
     await expect(this.header.getLoginButton).toBeVisible();
   }
