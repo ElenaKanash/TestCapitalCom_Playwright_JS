@@ -32,15 +32,11 @@ class Login {
     await this.clickHeaderLoginButton();
     await this.validLoginForm();
     await this.page.waitForNavigation();
-   // await this.page.waitForLoadState('load')
     await this.page.goBack();
-    await this.page.waitForLoadState('load');      
-    await this.checkMyAccountButton();    
-    await this.getMyAccountButton.scrollIntoViewIfNeeded();
-    await this.getMyAccountButton.focus();
-    await this.clickMyAcoountBtn()  
-    await this.getLogout.scrollIntoViewIfNeeded();
-    await this.clickLogoutBtn()   
+    await this.page.waitForLoadState('load');
+    await this.checkMyAccountButton();
+    await this.clickMyAcoountBtn()
+    await this.clickLogoutBtn()
   }
 
   async clickHeaderLoginButton() {
@@ -73,12 +69,14 @@ class Login {
   }
 
   async clickMyAcoountBtn() {
-    await this.getMyAccountButton.click(); 
+    await this.getMyAccountButton.scrollIntoViewIfNeeded();
+    await this.getMyAccountButton.focus();
+    await this.getMyAccountButton.click();
   }
 
   async clickLogoutBtn() {
-   // await this.getLogout.scrollIntoViewIfNeeded();
-    await this.getLogout.click();  
+    await this.getLogout.scrollIntoViewIfNeeded();
+    await this.getLogout.click();
   }
 
 }
