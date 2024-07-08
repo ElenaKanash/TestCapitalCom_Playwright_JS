@@ -31,12 +31,11 @@ test.describe('JS/US_11.01.07_Menu [Educations] > Menu item [Glossary of trading
   test.beforeEach(async ({ page }) => {
     const mainPage = new MainPage(page);
     const header = new Header(page);
-    const login = new Login(page);
+    const login = new Login(page, header);
 
     await mainPage.goToMainPage();
     await mainPage.clickAcceptAllCookies();
-    await header.selectCountry();
-    await header.clickLoginButton();
+    await header.selectCountry();    
     await login.userUnautoruzed();
   });
 
@@ -53,12 +52,11 @@ test.describe('JS/US_11.01.07_Menu [Educations] > Menu item [Glossary of trading
   test.beforeEach(async ({ page }) => {
     const mainPage = new MainPage(page);
     const header = new Header(page);
-    const login = new Login(page);
+    const login = new Login(page, header);
 
     await mainPage.goToMainPage();
     await mainPage.clickAcceptAllCookies();
-    await header.selectCountry();
-    await header.clickLoginButton();    
+    await header.selectCountry();      
     await login.userAutorizes();
   });
 
