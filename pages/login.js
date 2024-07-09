@@ -42,7 +42,7 @@ class Login {
     await this.getLogout.scrollIntoViewIfNeeded();
     await this.getLogout.focus()
     await this.getLogout.click({ timeout: 25000 });
-    await expect(this.getLoginBtn).toBeVisible();
+    await expect(this.getLoginBtn).toBeVisible(); 
   }
 
   async clickLoginButton() {
